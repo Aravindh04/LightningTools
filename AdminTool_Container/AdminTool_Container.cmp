@@ -1,0 +1,35 @@
+<aura:component controller="AdminToolServerController">
+    <aura:attribute name="userOptions" type="list" default="['user1','user2']"/>
+    <aura:attribute name="tempUserOptions" type="list" default="['user1','user2']"/>
+    <aura:attribute name="profileOptions" type="list" default="['user1','user2']"/>
+    <aura:attribute name="tempProfileOptions" type="list" default="['user1','user2']"/>
+    <aura:attribute name="sObjects" type="list" default="['user1','user2']"/>
+    <aura:attribute name="tempSObjects" type="list" default="['user1','user2']"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <c:ServerActionService aura:Id="serverAction"/>
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="3" class="slds-p-around_xxx-small" aura:Id="controller_section">
+            <c:inputSearch searchText=""/>
+            <lightning:select label="Select a user" aura:id="colorId" value="{!v.selectedValue}">
+                <aura:iteration items="{!v.userOptions}" var="option">
+                    <option text="{!option}" value="{!option}" selected="{!option}"/>
+                </aura:iteration>
+            </lightning:select>
+            <lightning:select name="colorId" label="Select from available record type" aura:id="colorId" value="{!v.selectedValue}">
+                <aura:iteration items="{!v.profileOptions}" var="option">
+                    <option text="{!option}" value="{!option}" selected="{!option}"/>
+                </aura:iteration>
+            </lightning:select>
+            <lightning:select name="colorId" label="Select a sObject:" aura:id="colorId" value="{!v.selectedValue}">
+                <aura:iteration items="{!v.sObjects}" var="option">
+                    <option text="{!option}" value="{!option}" selected="{!option}"/>
+                </aura:iteration>
+            </lightning:select>
+		</lightning:layoutItem>
+
+		<lightning:layoutItem size="9" padding="around-small" aura:Id="data_section">
+			
+		</lightning:layoutItem>
+	</lightning:layout>
+
+</aura:component>
